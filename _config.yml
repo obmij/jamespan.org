@@ -1,0 +1,9 @@
+title: JamesPanDotOrg
+email: info@jamespan.org
+description: Inspired by the true life experience of an adult survivor of childhood sexual abuse which caused a life-long trauma and m-PDST in consequence.
+baseurl: ""
+url: ""
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
