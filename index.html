@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JP dot Org — Coming Soon</title>
+<style>
+:root{
+  --bg:#f4f1ea;
+  --bg2:#eef3ed;
+  --ink:#17231f;
+  --text:#273c35;
+  --muted:#697a73;
+  --accent:#315f50;
+  --warm:#a37c45;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{
+  margin:0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 18% 16%, rgba(49,95,80,.14), transparent 30%),
+    radial-gradient(circle at 86% 82%, rgba(163,124,69,.12), transparent 32%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.22;
+  background:linear-gradient(115deg,transparent 0 38%,rgba(49,95,80,.08) 50%,transparent 62% 100%);
+  transform:translateX(-18%);
+  animation:veil 12s ease-in-out infinite alternate;
+}
+@keyframes veil{to{transform:translateX(18%)}}
+.wrap{
+  position:relative;
+  z-index:1;
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px 24px;
+}
+.notice{width:min(850px,100%)}
+.topline{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  margin-bottom:clamp(34px,7vh,62px);
+  animation:enter .7s ease both;
+}
+.brand{font-size:15px;font-weight:720;letter-spacing:.02em;color:rgba(23,35,31,.84)}
+.lang-switch{
+  display:flex;gap:18px;align-items:center;
+  font-size:14px;letter-spacing:.035em;color:rgba(23,35,31,.52);
+  user-select:none;
+}
+.lang-switch span{position:relative;cursor:pointer;transition:color .24s ease,opacity .24s ease,transform .24s ease,text-shadow .24s ease}
+.lang-switch:hover span{opacity:.42}
+.lang-switch span:hover,.lang-switch span.active{opacity:1;color:var(--ink);transform:translateY(-2px);text-shadow:0 10px 26px rgba(49,95,80,.18)}
+.lang-switch span::after{content:"";position:absolute;left:50%;bottom:-7px;width:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);transform:translateX(-50%);transition:width .25s ease}
+.lang-switch span:hover::after,.lang-switch span.active::after{width:110%}
+.kicker{
+  font-size:13px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  font-weight:780;
+  color:var(--accent);
+  animation:enter .7s .06s ease both;
+}
+.headline{
+  margin:15px 0 0;
+  font-size:clamp(19px,2.6vw,27px);
+  line-height:1.35;
+  letter-spacing:-.018em;
+  font-weight:720;
+  max-width:720px;
+  color:rgba(23,35,31,.9);
+  animation:enter .7s .12s ease both;
+}
+.copy{
+  margin-top:clamp(26px,4.5vh,42px);
+  max-width:805px;
+  color:var(--text);
+  font-size:clamp(19px,2.25vw,24px);
+  line-height:1.78;
+  letter-spacing:-.012em;
+  animation:enter .7s .19s ease both;
+}
+.copy p{margin:0}.copy p+p{margin-top:15px}
+.copy .anchor{color:var(--accent);font-weight:760}
+.meta{
+  margin-top:clamp(26px,4vh,38px);
+  max-width:780px;
+  color:rgba(23,35,31,.67);
+  font-size:clamp(14px,1.55vw,16px);
+  line-height:1.8;
+  animation:enter .7s .28s ease both;
+}
+.meta p{margin:0}.meta p+p{margin-top:8px}
+.meta strong{color:var(--ink);font-weight:720}
+.preview{
+  margin-top:18px;
+  color:rgba(23,35,31,.52);
+  font-size:13.5px;
+  line-height:1.7;
+  animation:enter .7s .36s ease both;
+}
+@keyframes enter{from{opacity:0;transform:translateY(12px);filter:blur(4px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@media(max-width:640px){
+  .wrap{align-items:flex-start;padding-top:28px}
+  .topline{flex-direction:column;align-items:flex-start;margin-bottom:44px}
+  .lang-switch{gap:15px;font-size:13px;flex-wrap:wrap}
+  .copy{font-size:20px;line-height:1.72}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <main class="notice" aria-live="polite">
+    <div class="topline">
+      <div class="brand">JP dot Org</div>
+      <nav class="lang-switch" aria-label="Language switcher">
+        <span data-lang="zh" onclick="setLang('zh')">正體中文</span>
+        <span data-lang="cn" onclick="setLang('cn')">简体中文</span>
+        <span data-lang="en" onclick="setLang('en')">English</span>
+      </nav>
+    </div>
+
+    <div class="kicker" data-i18n="soon"></div>
+    <h1 class="headline" data-i18n="title"></h1>
+
+    <section class="copy" aria-label="Announcement">
+      <p data-i18n="p1"></p>
+      <p class="anchor" data-i18n="p2"></p>
+      <p data-i18n="p3"></p>
+    </section>
+
+    <section class="meta" aria-label="Launch information">
+      <p data-i18n-html="m1"></p>
+      <p data-i18n-html="m2"></p>
+      <p data-i18n-html="m3"></p>
+    </section>
+
+    <div class="preview" data-i18n="preview"></div>
+  </main>
+</div>
+<script>
+const I18N={
+ zh:{
+  soon:'Coming Soon',
+  title:'JP dot Org 將以公益教育內容啟動，聚焦兒少保護、預防教育與多語系理解。',
+  p1:'我始終相信，人性本善。當傷害發生，問題往往不只在於某一次錯誤，而是更早之前缺席的教育、照護與引導。',
+  p2:'預防是關鍵，教育是根本。',
+  p3:'JP dot Org 的首次上線，將先提供正體中文、简体中文與 English 三種語言版本，協助家長、照護者與孩子更容易理解危險辨識、求助意識與自我保護的 know-how。',
+  m1:'部分內容基於已授權之 <strong>Harvard T.H. Chan School of Public Health (MPH)</strong> 資料進行整理與轉化。',
+  m2:'網站內本土化內容與語言轉換架構由 <strong>James Pan</strong> 規劃與工程化。',
+  m3:'網站內本土化內容可於提出申請並經審核通過後提供，惟不包含原始引用之原文內容。',
+  preview:'本頁為上線預告，完整內容將於後續版本公開。'
+ },
+ cn:{
+  soon:'Coming Soon',
+  title:'JP dot Org 将以公益教育内容启动，聚焦儿少保护、预防教育与多语系理解。',
+  p1:'我始终相信，人性本善。当伤害发生，问题往往不只在于某一次错误，而是更早之前缺席的教育、照护与引导。',
+  p2:'预防是关键，教育是根本。',
+  p3:'JP dot Org 的首次上线，将先提供正体中文、简体中文与 English 三种语言版本，协助家长、照护者与孩子更容易理解危险辨识、求助意识与自我保护的 know-how。',
+  m1:'部分内容基于已授权之 <strong>Harvard T.H. Chan School of Public Health (MPH)</strong> 资料进行整理与转化。',
+  m2:'网站内本土化内容与语言转换架构由 <strong>James Pan</strong> 规划与工程化。',
+  m3:'网站内本土化内容可于提出申请并经审核通过后提供，惟不包含原始引用之原文内容。',
+  preview:'本页为上线预告，完整内容将于后续版本公开。'
+ },
+ en:{
+  soon:'Coming Soon',
+  title:'JP dot Org will launch as a public-interest education initiative focused on child protection, prevention education, and multilingual understanding.',
+  p1:'I believe that human nature is inherently good. When harm occurs, the issue is often not a single act alone, but the education, care, and guidance that were missing long before it happened.',
+  p2:'Prevention is the key. Education is the foundation.',
+  p3:'The first launch of JP dot Org will be available in Traditional Chinese, Simplified Chinese, and English, helping parents, caregivers, and children better understand danger recognition, help-seeking awareness, and self-protection know-how.',
+  m1:'Selected content is adapted from authorized <strong>Harvard T.H. Chan School of Public Health (MPH)</strong> materials.',
+  m2:'Localization engineering and multilingual content structure are designed by <strong>James Pan</strong>.',
+  m3:'Localized content within this site may be provided upon request and subject to approval. Original quoted materials are excluded.',
+  preview:'This page is a launch preview. Full content will be released in a later version.'
+ }
+};
+function setLang(lang){
+  const d=I18N[lang]||I18N.zh;
+  document.documentElement.lang=lang==='en'?'en':lang==='cn'?'zh-Hans':'zh-Hant';
+  localStorage.setItem('jp_lang',lang);
+  document.querySelectorAll('[data-i18n]').forEach(el=>{el.textContent=d[el.dataset.i18n]||''});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{el.innerHTML=d[el.dataset.i18nHtml]||''});
+  document.querySelectorAll('[data-lang]').forEach(el=>el.classList.toggle('active',el.dataset.lang===lang));
+}
+setLang(localStorage.getItem('jp_lang')||'zh');
+</script>
+</body>
+</html>
