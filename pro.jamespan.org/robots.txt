@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pro.jamespan.org/sitemap.xml
