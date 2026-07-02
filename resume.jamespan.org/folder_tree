@@ -1,0 +1,12 @@
+resume/
+├── english.html
+├── chinese.html
+├── css/
+│   └── resume.css
+├── js/
+│   ├── resume.js
+│   └── render.js
+├── data/
+│   ├── english.json
+│   └── chinese.json
+└── assets/
